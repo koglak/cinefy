@@ -1,0 +1,40 @@
+@import './systemColors';
+
+.navbar {
+    background-color: $primary-color;
+    box-shadow: 0 4px 6px $box-shadow-color;
+    display: flex;
+
+    .navbar-icon-container {
+        background-color: $accent-color;
+        border-radius: 50%;
+        width: 2.7rem;
+        height: 2.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: rotate(-25deg);
+        }
+    }
+
+    .navbar-icon {
+        font-size: 1.5rem;
+        color: $accent-color;
+    }
+
+    .navbar-logo {
+        color: $accent-color;
+        cursor: pointer;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $text-hover-color;
+        }
+    }
+}
