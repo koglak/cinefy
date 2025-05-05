@@ -8,7 +8,6 @@ import {
     CircularProgress,
     Card,
     CardContent,
-    CardMedia,
 } from '@mui/material';
 import { AppDispatch, RootState } from '../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -43,10 +42,9 @@ const DetailPage: React.FC = () => {
             </Button>
 
             <Card className={styles.card}>
-                <CardMedia
-                    component="img"
+                <img
                     className={styles.cardMedia}
-                    image={movie.Poster !== 'N/A' ? movie.Poster : ''}
+                    src={movie.Poster !== 'N/A' ? movie.Poster : ''}
                     alt={movie.Title}
                 />
                 <CardContent className={styles.cardContent}>
@@ -56,19 +54,19 @@ const DetailPage: React.FC = () => {
                     <Typography variant="subtitle1" gutterBottom className={styles.subtitle}>
                         {movie.Year} • {movie.Runtime} • {movie.Genre}
                     </Typography>
-                    <Typography variant="body2" paragraph>
+                    <Typography variant="body2">
                         <strong>Director:</strong> {movie.Director}
                     </Typography>
-                    <Typography variant="body2" paragraph>
+                    <Typography variant="body2">
                         <strong>Cast:</strong> {movie.Actors}
                     </Typography>
-                    <Typography variant="body2" paragraph>
+                    <Typography variant="body2">
                         <strong>IMDb Rating:</strong>
                         {Array.from({ length: Math.round(Number(movie.imdbRating) / 2) }, (_, i) => (
                             <span key={i}>⭐</span>
                         ))} ({movie.imdbRating} / 10)
                     </Typography>
-                    <Typography variant="body2" paragraph>
+                    <Typography variant="body2" className={styles.plot}>
                         <strong>Plot:</strong> {movie.Plot}
                     </Typography>
                 </CardContent>
