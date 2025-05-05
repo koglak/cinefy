@@ -10,8 +10,8 @@ export default function Navbar() {
     };
 
     return (
-        <AppBar position="static" className="navbar">
-            <Toolbar>
+        <AppBar position="static" >
+            <Toolbar className="navbar">
                 <div className="navbar-icon-container">
                     <span className="navbar-icon">🎬</span>
                 </div>
