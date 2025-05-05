@@ -54,19 +54,19 @@ const DetailPage: React.FC = () => {
                     <Typography variant="subtitle1" gutterBottom className={styles.subtitle}>
                         {movie.Year} • {movie.Runtime} • {movie.Genre}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="body2" paragraph>
                         <strong>Director:</strong> {movie.Director}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="body2" paragraph>
                         <strong>Cast:</strong> {movie.Actors}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="body2" paragraph className={styles.rating}>
                         <strong>IMDb Rating:</strong>
                         {Array.from({ length: Math.round(Number(movie.imdbRating) / 2) }, (_, i) => (
-                            <span key={i}>⭐</span>
+                            <span key={i} className={styles.star}>⭐</span>
                         ))} ({movie.imdbRating} / 10)
                     </Typography>
-                    <Typography variant="body2" className={styles.plot}>
+                    <Typography variant="body2" paragraph className={styles.plot}>
                         <strong>Plot:</strong> {movie.Plot}
                     </Typography>
                 </CardContent>
