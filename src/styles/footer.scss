@@ -1,0 +1,10 @@
+@import './systemColors';
+
+.footer {
+    background-color: $primary-color;
+    color: $text-hover-color;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    border-top: 1px solid $box-shadow-color;
+}
