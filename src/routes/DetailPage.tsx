@@ -60,7 +60,10 @@ const DetailPage: React.FC = () => {
                         <strong>Cast:</strong> {movie.Actors}
                     </Typography>
                     <Typography variant="body2" paragraph>
-                        <strong>IMDb Rating:</strong> ⭐ {movie.imdbRating}
+                        <strong>IMDb Rating:</strong>
+                        {Array.from({ length: Math.round(Number(movie.imdbRating) / 2) }, (_, i) => (
+                            <span key={i}>⭐</span>
+                        ))} ({movie.imdbRating} / 10)
                     </Typography>
                     <Typography variant="body2" paragraph>
                         <strong>Plot:</strong> {movie.Plot}
