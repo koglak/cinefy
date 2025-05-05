@@ -1,0 +1,38 @@
+@import './systemColors';
+
+.container {
+    background-color: $white;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+.backButton {
+    margin-bottom: 16px; 
+    background-color: $primary-color;
+    color: $white;
+}
+
+.card {
+    display: flex;
+    margin-top: 24px;
+    box-shadow: 0px 3px 6px $box-shadow-color;
+    border-radius: 8px; 
+}
+
+.cardMedia {
+    width: 300px;
+    border-radius: 4px 0 0 4px;
+}
+
+.cardContent {
+    flex: 1;
+    padding: 24px; 
+}
+
+.title {
+    font-weight: bold;
+}
+
+.subtitle {
+    color: $secondary-color; 
+}

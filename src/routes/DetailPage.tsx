@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { AppDispatch, RootState } from '../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from '../styles/DetailPage.module.scss';
 
 const DetailPage: React.FC = () => {
     const { id } = useParams();
@@ -36,21 +37,23 @@ const DetailPage: React.FC = () => {
     }
 
     return (
-        <Box p={4}>
-            <Button variant="contained" onClick={() => navigate(-1)}>
+        <Box className={styles.container}>
+            <Button variant="contained" onClick={() => navigate(-1)} className={styles.backButton}>
                 ← Back
             </Button>
 
-            <Card sx={{ display: 'flex', mt: 3 }}>
+            <Card className={styles.card}>
                 <CardMedia
                     component="img"
-                    sx={{ width: 300 }}
+                    className={styles.cardMedia}
                     image={movie.Poster !== 'N/A' ? movie.Poster : ''}
                     alt={movie.Title}
                 />
-                <CardContent sx={{ flex: 1 }}>
-                    <Typography variant="h4">{movie.Title}</Typography>
-                    <Typography variant="subtitle1" gutterBottom>
+                <CardContent className={styles.cardContent}>
+                    <Typography variant="h4" className={styles.title}>
+                        {movie.Title}
+                    </Typography>
+                    <Typography variant="subtitle1" gutterBottom className={styles.subtitle}>
                         {movie.Year} • {movie.Runtime} • {movie.Genre}
                     </Typography>
                     <Typography variant="body2" paragraph>
