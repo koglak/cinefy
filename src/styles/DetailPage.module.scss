@@ -15,9 +15,6 @@
     background: linear-gradient(135deg, $white, $accent-color);
     min-height: 100vh;
     padding: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .backButton {
@@ -80,4 +77,12 @@
 
 .star {
     color: #ffab00;
+}
+
+.yearRuntime {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    color: $text-hover-color;
+    font-weight: 500;
 }

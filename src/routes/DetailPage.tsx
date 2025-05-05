@@ -8,6 +8,7 @@ import {
     CircularProgress,
     Card,
     CardContent,
+    Chip,
 } from '@mui/material';
 import { AppDispatch, RootState } from '../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -51,22 +52,26 @@ const DetailPage: React.FC = () => {
                     <Typography variant="h4" className={styles.title}>
                         {movie.Title}
                     </Typography>
-                    <Typography variant="subtitle1" gutterBottom className={styles.subtitle}>
-                        {movie.Year} • {movie.Runtime} • {movie.Genre}
-                    </Typography>
-                    <Typography variant="body2" paragraph>
+                    <Box display="flex" gap={1} flexWrap="wrap" mb={2} mt={2}>
+                        {movie?.Genre?.split(', ').map((genre) => (
+                            <Chip key={genre} label={genre} variant="outlined" />
+                        ))}
+                    </Box>
+                    <Typography variant="body2" className={styles.yearRuntime}>
+                        📆 {movie.Year} | ⏲ {movie.Runtime} </Typography>
+                    <Typography variant="body2">
                         <strong>Director:</strong> {movie.Director}
                     </Typography>
-                    <Typography variant="body2" paragraph>
+                    <Typography variant="body2">
                         <strong>Cast:</strong> {movie.Actors}
                     </Typography>
-                    <Typography variant="body2" paragraph className={styles.rating}>
+                    <Typography variant="body2" className={styles.rating}>
                         <strong>IMDb Rating:</strong>
                         {Array.from({ length: Math.round(Number(movie.imdbRating) / 2) }, (_, i) => (
                             <span key={i} className={styles.star}>⭐</span>
                         ))} ({movie.imdbRating} / 10)
                     </Typography>
-                    <Typography variant="body2" paragraph className={styles.plot}>
+                    <Typography variant="body2" className={styles.plot}>
                         <strong>Plot:</strong> {movie.Plot}
                     </Typography>
                 </CardContent>
