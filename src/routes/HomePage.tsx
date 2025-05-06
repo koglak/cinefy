@@ -4,7 +4,6 @@ import {
     Select,
     MenuItem,
     Grid,
-    CircularProgress,
     Typography,
     InputLabel,
     FormControl,
@@ -16,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovies, setSearch, setType, setYear, setPage } from '../redux/movieSlice';
 import { RootState } from '../redux/store';
 import { AppDispatch } from '../redux/store';
+import styles from '../styles/HomePage.module.scss'
 
 const Home: React.FC = () => {
     const dispatch: AppDispatch = useDispatch();
@@ -46,8 +46,8 @@ const Home: React.FC = () => {
     ];
 
     return (
-        <div style={{ padding: '2rem' }}>
-            <Grid container spacing={2} alignItems="center">
+        <div className='p-2'>
+            <Grid container spacing={2} alignItems="center" className={styles.filterContainer}>
                 <Grid size={4}>
                     <TextField
                         fullWidth
@@ -84,10 +84,8 @@ const Home: React.FC = () => {
             </Grid>
 
             <div style={{ marginTop: '2rem' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    {loading ? (
-                        <CircularProgress />
-                    ) : list.length === 0 ? (
+                <div className='d-flex justify-content-center align-items-center'>
+                    {list.length === 0 ? (
                         <Typography>No results found.</Typography>
                     ) : (
                         <>
@@ -95,20 +93,23 @@ const Home: React.FC = () => {
                                 <DataGrid
                                     rows={list}
                                     columns={columns}
-                                    paginationModel={{ pageSize: 10, page: page - 1 }}
-                                    onPaginationModelChange={(model: { page: number }) => dispatch(setPage(model.page + 1))}
+                                    paginationMode="server"
+                                    pageSizeOptions={[10]}
+                                    rowCount={totalResults}
+                                    paginationModel={{ page: page - 1, pageSize: 10 }}
+                                    onPaginationModelChange={(model) => dispatch(setPage(model.page + 1))}
                                     onRowClick={handleRowClick}
                                     getRowId={(row: any) => row.imdbID}
+                                    loading={loading}
+                                    hideFooterPagination
                                 />
-                            </div>
-
-                            <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center' }}>
-                                <Pagination
-                                    count={Math.ceil(totalResults / 10)}
-                                    page={page}
-                                    onChange={(_, value) => dispatch(setPage(value))}
-                                    color="primary"
-                                />
+                                <div className='d-flex justify-content-center align-items-center mt-2 mb-2'>
+                                    <Pagination
+                                        count={Math.ceil(totalResults / 10)}
+                                        page={page}
+                                        onChange={(_, value) => dispatch(setPage(value))}
+                                    />
+                                </div>
                             </div>
                         </>
                     )}
