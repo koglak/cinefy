@@ -2,6 +2,8 @@
 
 Cinefy is a React-based web application for exploring movies using the OMDB API. It allows users to search for movies, view details, and navigate through a clean and responsive interface.
 
+![Demo](public/demo.gif)
+
 ---
 
 ## Getting Started
