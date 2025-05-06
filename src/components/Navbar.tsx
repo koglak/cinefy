@@ -11,7 +11,7 @@ export default function Navbar() {
 
     return (
         <AppBar position="static" >
-            <Toolbar className="navbar">
+            <Toolbar className="navbar-toolbar">
                 <div className="navbar-icon-container">
                     <span className="navbar-icon">🎬</span>
                 </div>
