@@ -8,10 +8,11 @@ import {
     CircularProgress,
     Card,
     CardContent,
-    CardMedia,
+    Chip,
 } from '@mui/material';
 import { AppDispatch, RootState } from '../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from '../styles/DetailPage.module.scss';
 
 const DetailPage: React.FC = () => {
     const { id } = useParams();
@@ -36,36 +37,41 @@ const DetailPage: React.FC = () => {
     }
 
     return (
-        <Box p={4}>
-            <Button variant="contained" onClick={() => navigate(-1)}>
+        <Box className={styles.container}>
+            <Button variant="contained" onClick={() => navigate(-1)} className={styles.backButton}>
                 ← Back
             </Button>
 
-            <Card sx={{ display: 'flex', mt: 3 }}>
-                <CardMedia
-                    component="img"
-                    sx={{ width: 300 }}
-                    image={movie.Poster !== 'N/A' ? movie.Poster : ''}
+            <Card className={styles.card}>
+                <img
+                    className={styles.cardMedia}
+                    src={movie.Poster !== 'N/A' ? movie.Poster : ''}
                     alt={movie.Title}
                 />
-                <CardContent sx={{ flex: 1 }}>
-                    <Typography variant="h4">{movie.Title}</Typography>
-                    <Typography variant="subtitle1" gutterBottom>
-                        {movie.Year} • {movie.Runtime} • {movie.Genre}
+                <CardContent className={styles.cardContent}>
+                    <Typography variant="h4" className={styles.title}>
+                        {movie.Title}
                     </Typography>
-                    <Typography variant="body2" paragraph>
+                    <Box display="flex" gap={1} flexWrap="wrap" mb={2} mt={2}>
+                        {movie?.Genre?.split(', ').map((genre) => (
+                            <Chip key={genre} label={genre} variant="outlined" />
+                        ))}
+                    </Box>
+                    <Typography variant="body2" className={styles.yearRuntime}>
+                        📆 {movie.Year} | ⏲ {movie.Runtime} </Typography>
+                    <Typography variant="body2">
                         <strong>Director:</strong> {movie.Director}
                     </Typography>
-                    <Typography variant="body2" paragraph>
+                    <Typography variant="body2">
                         <strong>Cast:</strong> {movie.Actors}
                     </Typography>
-                    <Typography variant="body2" paragraph>
+                    <Typography variant="body2" className={styles.rating}>
                         <strong>IMDb Rating:</strong>
                         {Array.from({ length: Math.round(Number(movie.imdbRating) / 2) }, (_, i) => (
-                            <span key={i}>⭐</span>
+                            <span key={i} className={styles.star}>⭐</span>
                         ))} ({movie.imdbRating} / 10)
                     </Typography>
-                    <Typography variant="body2" paragraph>
+                    <Typography variant="body2" className={styles.plot}>
                         <strong>Plot:</strong> {movie.Plot}
                     </Typography>
                 </CardContent>

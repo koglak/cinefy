@@ -1,0 +1,88 @@
+@import './systemColors';
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    background: linear-gradient(135deg, $white, $accent-color);
+    min-height: 55vh;
+    padding: 16px;
+}
+
+.backButton {
+    margin-bottom: 16px;
+    background-color: $primary-color !important;
+    transition: background-color 0.3s, transform 0.3s;
+    &:hover {
+        background-color: $text-hover-color !important;
+        transform: scale(1.05);
+    }
+}
+
+.card {
+    display: flex;
+    margin-top: 24px;
+    box-shadow: 0px 4px 10px $box-shadow-color;
+    border-radius: 12px;
+    animation: fadeIn 0.5s ease-out;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: $white;
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.cardMedia {
+    width: 280px;
+    height: auto;
+    border-radius: 12px 0 0 12px;
+}
+
+.cardContent {
+    flex: 1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-weight: bold;
+    color: $primary-color;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: $text-hover-color;
+    margin-bottom: 16px;
+}
+
+.rating {
+    margin-bottom: 16px;
+}
+
+.plot {
+    margin-top: 16px;
+    color: $primary-color;
+}
+
+.star {
+    color: #ffab00;
+}
+
+.yearRuntime {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    color: $text-hover-color;
+    font-weight: 500;
+}
