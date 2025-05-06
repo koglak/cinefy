@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovies, setSearch, setType, setYear, setPage } from '../redux/movieSlice';
 import { RootState } from '../redux/store';
 import { AppDispatch } from '../redux/store';
+import styles from '../styles/HomePage.module.scss'
 
 const Home: React.FC = () => {
     const dispatch: AppDispatch = useDispatch();
@@ -45,8 +46,8 @@ const Home: React.FC = () => {
     ];
 
     return (
-        <div style={{ padding: '2rem' }}>
-            <Grid container spacing={2} alignItems="center">
+        <div className='p-2'>
+            <Grid container spacing={2} alignItems="center" className={styles.filterContainer}>
                 <Grid size={4}>
                     <TextField
                         fullWidth
@@ -102,12 +103,11 @@ const Home: React.FC = () => {
                                     loading={loading}
                                     hideFooterPagination
                                 />
-                                <div className='d-flex justify-content-center align-items-center'>
+                                <div className='d-flex justify-content-center align-items-center mt-2 mb-2'>
                                     <Pagination
                                         count={Math.ceil(totalResults / 10)}
                                         page={page}
                                         onChange={(_, value) => dispatch(setPage(value))}
-                                        className='mt-2'
                                     />
                                 </div>
                             </div>
