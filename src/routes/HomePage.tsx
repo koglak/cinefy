@@ -4,7 +4,6 @@ import {
     Select,
     MenuItem,
     Grid,
-    CircularProgress,
     Typography,
     InputLabel,
     FormControl,
@@ -107,8 +106,8 @@ const Home: React.FC = () => {
                                     <Pagination
                                         count={Math.ceil(totalResults / 10)}
                                         page={page}
-                                        onChange={(event, value) => dispatch(setPage(value))}
-                                        style={{ marginTop: '1rem' }}
+                                        onChange={(_, value) => dispatch(setPage(value))}
+                                        className='mt-2'
                                     />
                                 </div>
                             </div>
